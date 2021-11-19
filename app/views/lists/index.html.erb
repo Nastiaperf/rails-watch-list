@@ -5,5 +5,13 @@
     <li><%= link_to list.name, list_path(list) %></li>
   <% end %>
 
+
   <%= link_to "Add a new list", new_list_path, class: "btn btn-primary my-3" %>
 </div>
+
+  <%#= cl_image_tag("zbgb0vhbfigzr2s9dvuj",
+      width: 400, height: 300, crop: :fill) %>
+
+  <!-- for face detection -->
+  <%#= cl_image_tag("zbgb0vhbfigzr2s9dvuj",
+      width: 150, height: 150, crop: :thumb, gravity: :face) %>

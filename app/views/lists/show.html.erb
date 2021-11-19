@@ -1,21 +1,28 @@
 <div class="container my-3">
-  <ul class="mx-auto list-group list-unstyled">
-    <li><h1><%= @list.name %></h1></li>
-  </ul>
-
-  <div class="card-product">
+  <div class="">
     <ul class="mx-auto list-group list-unstyled">
-      <% @list.bookmarks.each do |bookmark| %>
-        <li> <%= image_tag (bookmark.movie.poster_url), height: 300%></li>
-        <div class="card-product-infos">
-          <li><h3><%= bookmark.movie.title %></h3>
-          <p><%= bookmark.movie.rating %>/10</p></li>
-          <li><p><%= bookmark.movie.overview %></p></li>
-          <li class="list-group-item"><%= bookmark.comment %></li>
-        </div>
+      <li><h1><%= @list.name %></h1></li>
+      <% if @list.photo.attached? %>
+        <%= cl_image_tag @list.photo.key, height: 300, width: 900, crop: :fill %>
       <% end %>
     </ul>
   </div>
+
+  <%# style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_tag @list.photo.key, height: 300, width: 900, crop: :fill%>
+
+  <%# <div class="card-product"> %>
+    <% @list.bookmarks.each do |bookmark| %>
+      <ul class="list-unstyled card-product">
+        <li> <%= image_tag (bookmark.movie.poster_url), height: 300 %></li>
+        <div class="card-product-infos">
+          <li><p id="rating"><%= bookmark.movie.rating %>/10</p>
+          <h3><%= bookmark.movie.title %></h3></li>
+          <li id="overview"><p><%= bookmark.movie.overview %></p></li>
+          <li><img src="https://cdn-icons-png.flaticon.com/512/94/94894.png" alt="Commentary icon" id="commentary"><p><%= bookmark.comment %></p></li>
+        </div>
+      </ul>
+    <% end %>
+  <%# </div> %>
 
   <%= link_to "Add a bookmark", new_list_bookmark_path(@list), class: "btn btn-success my-3" %>
   <br>
