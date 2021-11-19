@@ -6,7 +6,7 @@
   <div class="card-product">
     <ul class="mx-auto list-group list-unstyled">
       <% @list.bookmarks.each do |bookmark| %>
-        <li> <%= image_tag (bookmark.movie.poster_url), height: 300 %></li>
+        <li> <%= image_tag (bookmark.movie.poster_url), height: 300%></li>
         <div class="card-product-infos">
           <li><h3><%= bookmark.movie.title %></h3>
           <p><%= bookmark.movie.rating %>/10</p></li>
